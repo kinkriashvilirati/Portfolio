@@ -33,9 +33,12 @@ import { ThemeMode } from '../../styles/theme.service';
                   >
                     <span>{{ link.label }}</span>
                     <span
-                      class="absolute inset-x-2 bottom-1 h-0.5 rounded-full bg-accent transition-opacity"
+                      class="absolute inset-x-2 bottom-1 h-0.5 rounded-full bg-accent opacity-0 transition-all duration-300 ease-out transform-gpu"
                       [class.opacity-100]="activeSection() === link.id"
-                      [class.opacity-0]="activeSection() !== link.id"
+                      [class.scale-x-100]="activeSection() === link.id"
+                      [class.scale-x-0]="activeSection() !== link.id"
+                      [class.origin-left]="lineDirection() === 'forward'"
+                      [class.origin-right]="lineDirection() === 'backward'"
                     ></span>
                   </button>
                 </li>
@@ -94,6 +97,7 @@ import { ThemeMode } from '../../styles/theme.service';
 export class NavbarComponent {
   readonly links = input<readonly NavLink[]>([]);
   readonly activeSection = input<SectionId>('about');
+  readonly lineDirection = input<'forward' | 'backward'>('forward');
   readonly theme = input<ThemeMode>('dark');
 
   readonly navigate = output<SectionId>();

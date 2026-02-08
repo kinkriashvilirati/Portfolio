@@ -2,32 +2,35 @@
 @import 'tailwindcss';
 
 :root {
-  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-body: 'Manrope', 'Segoe UI', sans-serif;
-  --color-bg: #060a13;
-  --color-surface: #0d1424;
-  --color-surface-strong: #141f36;
-  --color-foreground: #e8eefb;
-  --color-muted: #99a6c3;
-  --color-border: #26344f;
-  --color-accent: #22d5ff;
-  --color-accent-strong: #7ce8ff;
-  --color-accent-2: #24e8be;
-  --color-shadow: rgba(9, 18, 36, 0.48);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --color-bg: #111215;
+  --color-surface: #1a1d23;
+  --color-surface-strong: #242935;
+  --color-foreground: #f2f3f7;
+  --color-muted: #b1b7c6;
+  --color-border: #343b4d;
+  --color-accent: #ff7a59;
+  --color-accent-strong: #ff9b82;
+  --color-accent-2: #6ec5ff;
+  --color-shadow: rgba(11, 12, 16, 0.45);
+  --badge-progress-border: rgb(253 224 71 / 0.45);
+  --badge-progress-bg: rgb(253 224 71 / 0.18);
+  --badge-progress-text: #fef08a;
 }
 
 :root[data-theme='light'] {
-  --color-bg: #f7faff;
+  --color-bg: #fff9f6;
   --color-surface: #ffffff;
-  --color-surface-strong: #edf4ff;
-  --color-foreground: #111d36;
-  --color-muted: #4f5f80;
-  --color-border: #c8d6ef;
-  --color-accent: #0f77ff;
-  --color-accent-strong: #165ce6;
-  --color-accent-2: #06b6c4;
-  --color-shadow: rgba(17, 39, 82, 0.14);
+  --color-surface-strong: #fff0e8;
+  --color-foreground: #2a2d36;
+  --color-muted: #6d7487;
+  --color-border: #e8d8cf;
+  --color-accent: #e4572e;
+  --color-accent-strong: #c63f18;
+  --color-accent-2: #1a8fe3;
+  --color-shadow: rgba(42, 45, 54, 0.16);
+  --badge-progress-border: rgb(180 83 9 / 0.42);
+  --badge-progress-bg: rgb(245 158 11 / 0.2);
+  --badge-progress-text: #78350f;
 }
 
 @layer base {

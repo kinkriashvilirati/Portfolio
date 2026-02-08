@@ -8,7 +8,12 @@ import { SectionComponent } from '../../components/section/section.component';
   selector: 'app-hero-section',
   imports: [SectionComponent, ButtonComponent, BadgeComponent, CardComponent],
   template: `
-    <app-section sectionId="hero" className="pb-16 pt-14 sm:pt-20" [observeForNav]="false" [reveal]="false">
+    <app-section
+      sectionId="hero"
+      className="pb-16 pt-14 sm:pt-20"
+      [observeForNav]="false"
+      [reveal]="false"
+    >
       <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div class="space-y-7">
           <app-badge variant="progress">{{ availability() }}</app-badge>
@@ -18,7 +23,9 @@ import { SectionComponent } from '../../components/section/section.component';
               {{ role() }} - {{ location() }}
             </p>
 
-            <h1 class="max-w-3xl font-display text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+            <h1
+              class="max-w-3xl font-display text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
+            >
               {{ headline() }}
             </h1>
 
@@ -33,12 +40,16 @@ import { SectionComponent } from '../../components/section/section.component';
 
           <div class="flex flex-wrap items-center gap-3">
             <app-button size="lg" (pressed)="seeProjects.emit()">See Projects</app-button>
-            <app-button size="lg" variant="secondary" (pressed)="contactMe.emit()">Contact Me</app-button>
+            <app-button size="lg" variant="secondary" (pressed)="contactMe.emit()"
+              >Contact Me</app-button
+            >
           </div>
         </div>
 
         <app-card className="hero-stack-card border-accent/30 p-6 sm:p-8" [interactive]="true">
-          <p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-muted">Tech Stack</p>
+          <p class="mb-5 text-sm font-semibold uppercase tracking-[0.16em] text-muted">
+            Tech Stack
+          </p>
 
           <div class="flex flex-wrap gap-2.5">
             @for (item of tech(); track item; let index = $index) {

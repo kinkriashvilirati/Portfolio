@@ -39,7 +39,12 @@ import { SocialLink } from '../../data/profile';
             <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Social</p>
             <div class="flex flex-wrap gap-2">
               @for (item of social(); track item.label) {
-                <app-button [href]="item.url" [external]="item.url !== '#'" variant="secondary" size="sm">
+                <app-button
+                  [href]="item.url"
+                  [external]="item.url !== '#'"
+                  variant="secondary"
+                  size="sm"
+                >
                   {{ item.label }}
                 </app-button>
               }
@@ -82,10 +87,12 @@ import { SocialLink } from '../../data/profile';
               <textarea
                 formControlName="message"
                 class="h-32 w-full rounded-xl border border-border bg-surface/70 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent/70"
-                placeholder="Tell me about your project or role."
+                placeholder="What kind of project do you need help with?"
               ></textarea>
               @if (fieldInvalid('message')) {
-                <span class="mt-1 block text-xs text-rose-300">Message must be at least 10 characters.</span>
+                <span class="mt-1 block text-xs text-rose-300"
+                  >Message must be at least 10 characters.</span
+                >
               }
             </label>
 
@@ -96,7 +103,9 @@ import { SocialLink } from '../../data/profile';
     </app-section>
 
     @if (toastVisible()) {
-      <div class="toast-chip fixed bottom-5 right-5 z-50 rounded-xl border border-emerald-400/40 bg-emerald-400/20 px-4 py-3 text-sm text-emerald-100 shadow-soft">
+      <div
+        class="toast-chip fixed bottom-5 right-5 z-50 rounded-xl border border-emerald-400/40 bg-emerald-400/20 px-4 py-3 text-sm text-emerald-100 shadow-soft"
+      >
         {{ toastMessage() }}
       </div>
     }

@@ -22,7 +22,8 @@ export class BadgeComponent {
       neutral: 'border-border/80 bg-surface text-muted',
       accent: 'border-accent/40 bg-accent/15 text-accent',
       success: 'border-emerald-400/40 bg-emerald-400/15 text-emerald-300',
-      progress: 'border-amber-300/40 bg-amber-300/15 text-amber-200',
+      progress:
+        'border-[color:var(--badge-progress-border)] bg-[color:var(--badge-progress-bg)] text-[color:var(--badge-progress-text)]',
     };
 
     return `${base} ${variants[this.variant()]} ${this.className()}`.trim();

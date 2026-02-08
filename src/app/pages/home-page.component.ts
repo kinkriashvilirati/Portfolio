@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { profile, SectionId } from '../data/profile';
 import { AboutSectionComponent } from '../sections/about/about-section.component';
 import { ContactSectionComponent } from '../sections/contact/contact-section.component';
 import { EducationSectionComponent } from '../sections/education/education-section.component';
@@ -9,7 +10,6 @@ import { HeroSectionComponent } from '../sections/hero/hero-section.component';
 import { NavbarComponent } from '../sections/navbar/navbar.component';
 import { ProjectsSectionComponent } from '../sections/projects/projects-section.component';
 import { SkillsSectionComponent } from '../sections/skills/skills-section.component';
-import { profile, SectionId } from '../data/profile';
 import { ThemeService } from '../styles/theme.service';
 
 @Component({
@@ -36,6 +36,7 @@ import { ThemeService } from '../styles/theme.service';
       <app-navbar
         [links]="profileData.navLinks"
         [activeSection]="activeSection()"
+        [lineDirection]="navLineDirection()"
         [theme]="themeService.theme()"
         (navigate)="scrollToSection($event)"
         (viewPortfolio)="scrollToSection('projects')"
@@ -80,13 +81,17 @@ import { ThemeService } from '../styles/theme.service';
 export class HomePageComponent implements AfterViewInit, OnDestroy {
   readonly profileData = profile;
   readonly activeSection = signal<SectionId>('about');
+  readonly navLineDirection = signal<'forward' | 'backward'>('forward');
   readonly themeService = inject(ThemeService);
 
   private readonly document = inject(DOCUMENT);
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
-  private observer: IntersectionObserver | null = null;
-  private readonly visibilityRatios = new Map<SectionId, number>();
+  private readonly sectionOrder = new Map<SectionId, number>(
+    this.profileData.navLinks.map((link, index) => [link.id, index]),
+  );
+  private sectionElements: HTMLElement[] = [];
+  private readonly viewportSpyHandler = () => this.updateActiveFromViewport();
 
   constructor() {
     const description =
@@ -103,11 +108,16 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.setupScrollSpy();
+    this.setupSectionTracking();
   }
 
   ngOnDestroy(): void {
-    this.observer?.disconnect();
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.removeEventListener('scroll', this.viewportSpyHandler);
+    window.removeEventListener('resize', this.viewportSpyHandler);
   }
 
   scrollToSection(sectionId: SectionId): void {
@@ -116,56 +126,62 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
+    this.setActiveSection(sectionId);
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    this.activeSection.set(sectionId);
   }
 
-  private setupScrollSpy(): void {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+  private setupSectionTracking(): void {
+    if (typeof window === 'undefined') {
       return;
     }
 
-    const sections = this.profileData.navLinks
+    this.sectionElements = this.profileData.navLinks
       .map((link) => this.document.getElementById(link.id))
       .filter((section): section is HTMLElement => section !== null);
 
-    if (sections.length === 0) {
+    if (this.sectionElements.length === 0) {
       return;
     }
 
-    for (const section of sections) {
-      this.visibilityRatios.set(section.id as SectionId, 0);
+    this.updateActiveFromViewport();
+    window.addEventListener('scroll', this.viewportSpyHandler, { passive: true });
+    window.addEventListener('resize', this.viewportSpyHandler);
+  }
+
+  private updateActiveFromViewport(): void {
+    if (this.sectionElements.length === 0 || typeof window === 'undefined') {
+      return;
     }
 
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          const sectionId = (entry.target as HTMLElement).id as SectionId;
-          this.visibilityRatios.set(sectionId, entry.isIntersecting ? entry.intersectionRatio : 0);
-        }
+    const anchorY = window.innerHeight * 0.36;
+    let bestSection = this.sectionElements[0];
+    let bestDistance = Number.POSITIVE_INFINITY;
 
-        let activeId = this.activeSection();
-        let maxRatio = -1;
+    for (const section of this.sectionElements) {
+      const rect = section.getBoundingClientRect();
+      const anchorInside = rect.top <= anchorY && rect.bottom >= anchorY;
+      const distance = anchorInside
+        ? 0
+        : Math.min(Math.abs(rect.top - anchorY), Math.abs(rect.bottom - anchorY));
 
-        for (const [sectionId, ratio] of this.visibilityRatios.entries()) {
-          if (ratio > maxRatio) {
-            maxRatio = ratio;
-            activeId = sectionId;
-          }
-        }
-
-        if (maxRatio > 0) {
-          this.activeSection.set(activeId);
-        }
-      },
-      {
-        threshold: [0.2, 0.35, 0.5, 0.7],
-        rootMargin: '-32% 0px -42% 0px',
-      },
-    );
-
-    for (const section of sections) {
-      this.observer.observe(section);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestSection = section;
+      }
     }
+
+    this.setActiveSection(bestSection.id as SectionId);
+  }
+
+  private setActiveSection(sectionId: SectionId): void {
+    const currentSection = this.activeSection();
+    if (currentSection === sectionId) {
+      return;
+    }
+
+    const currentIndex = this.sectionOrder.get(currentSection) ?? 0;
+    const nextIndex = this.sectionOrder.get(sectionId) ?? 0;
+    this.navLineDirection.set(nextIndex >= currentIndex ? 'forward' : 'backward');
+    this.activeSection.set(sectionId);
   }
 }
