@@ -91,7 +91,8 @@ export const profile: ProfileData = {
     { id: 'contact', label: 'Contact' },
   ],
   headline: 'Front-End Developer',
-  subline: 'Building responsive web apps with React and Angular, focused on clean UX and strong performance.',
+  subline:
+    'Building responsive web apps with React and Angular, focused on clean UX and strong performance.',
   summary:
     'Dedicated and ambitious Front-End Developer, focused on gaining real-world experience and continuously improving.',
   availability: 'Available for junior role / internship',
@@ -178,7 +179,8 @@ export const profile: ProfileData = {
     {
       title: 'Tic-Tac-Toe',
       status: 'Done',
-      description: 'Built game logic, component communication, and state updates with Angular fundamentals.',
+      description:
+        'Built game logic, component communication, and state updates with Angular fundamentals.',
       githubUrl: 'https://github.com/kinkriashvilirati/Tic-Tac-Toe',
       liveUrl: 'https://tic-tac-toe-rk.vercel.app/',
     },
@@ -192,28 +194,32 @@ export const profile: ProfileData = {
     {
       title: 'Portfolio',
       status: 'In Progress',
-      description: 'Current stage: building a premium Angular portfolio with reusable architecture.',
+      description:
+        'Current stage: building a premium Angular portfolio with reusable architecture.',
       githubUrl: '#',
       liveUrl: '#',
     },
     {
       title: 'E-commerce Admin Dashboard',
       status: 'Planned',
-      description: 'Role-based dashboard with analytics cards, product tools, and reusable UI modules.',
+      description:
+        'Role-based dashboard with analytics cards, product tools, and reusable UI modules.',
       githubUrl: '#',
       liveUrl: '#',
     },
     {
       title: 'Realtime Support Chat UI',
       status: 'Planned',
-      description: 'Component-driven chat experience with status indicators and conversation management.',
+      description:
+        'Component-driven chat experience with status indicators and conversation management.',
       githubUrl: '#',
       liveUrl: '#',
     },
     {
       title: 'Booking Flow App',
       status: 'Planned',
-      description: 'Step-based reservation flow with validation, confirmation, and polished micro-interactions.',
+      description:
+        'Step-based reservation flow with validation, confirmation, and polished micro-interactions.',
       githubUrl: '#',
       liveUrl: '#',
     },
@@ -223,7 +229,14 @@ export const profile: ProfileData = {
     {
       title: 'Front End',
       icon: 'code',
-      skills: ['JavaScript', 'TypeScript', 'HTML', 'CSS', 'React', 'Angular (currently working on)'],
+      skills: [
+        'JavaScript',
+        'TypeScript',
+        'HTML',
+        'CSS',
+        'React',
+        'Angular (currently working on)',
+      ],
     },
     {
       title: 'APIs',
@@ -256,11 +269,12 @@ export const profile: ProfileData = {
       school: 'BTU - Business and Technology University',
       program: 'Information Technology',
       period: '2024 - current',
-      description: 'Building a strong technical base while focusing on practical front-end engineering skills.',
+      description:
+        'Building a strong technical base while focusing on practical front-end engineering skills.',
     },
   ],
   social: [
-    { label: 'GitHub', url: '#' },
+    { label: 'GitHub', url: 'https://github.com/kinkriashvilirati' },
     { label: 'LinkedIn', url: '#' },
   ],
 };

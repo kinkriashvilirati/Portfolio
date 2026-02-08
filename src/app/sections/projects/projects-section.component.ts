@@ -26,17 +26,21 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
     >
       <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p class="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-          Each project includes clear role impact, production-oriented decisions, and the main technical lessons.
+          Clean summaries here, deeper breakdown in details. This keeps cards fast to scan.
         </p>
 
-        <app-button routerLink="/angular-projects" variant="secondary">
-          Angular Projects
+        <app-button
+          routerLink="/angular-projects"
+          size="lg"
+          className="min-w-52 border border-accent/45 bg-accent text-bg shadow-elevated"
+        >
+          Angular Projects ->
         </app-button>
       </div>
 
-      <div class="grid gap-6 lg:grid-cols-3">
-        @for (project of projects(); track project.id) {
-          <app-card [interactive]="true" className="group flex h-full flex-col p-5 sm:p-6">
+      <div class="grid gap-6 lg:grid-cols-2">
+        @for (project of projects(); track project.id; let index = $index) {
+          <app-card [interactive]="true" [className]="projectCardClass(index)">
             <button
               type="button"
               class="relative overflow-hidden rounded-2xl border border-border/60 bg-bg/20"
@@ -52,7 +56,7 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
             </button>
 
             <div class="mt-5 flex flex-1 flex-col space-y-4">
-              <div class="flex items-start justify-between gap-3">
+              <div class="flex flex-wrap items-start justify-between gap-3">
                 <h3 class="font-display text-2xl font-semibold tracking-tight text-foreground">
                   {{ project.title }}
                 </h3>
@@ -64,7 +68,7 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
               <p class="text-sm leading-relaxed text-muted">{{ project.summary }}</p>
 
               <ul class="space-y-2 text-sm text-foreground">
-                @for (point of project.roleImpact; track point) {
+                @for (point of previewRoleImpact(project); track point) {
                   <li class="flex items-start gap-2">
                     <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent"></span>
                     <span>{{ point }}</span>
@@ -74,7 +78,9 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
 
               @if (project.features?.length) {
                 <div class="rounded-xl border border-border/60 bg-bg/20 p-3">
-                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Core Features</p>
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                    Core Features
+                  </p>
                   <ul class="mt-2 space-y-1 text-sm text-foreground">
                     @for (feature of project.features; track feature) {
                       <li>- {{ feature }}</li>
@@ -83,7 +89,9 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
                 </div>
               }
 
-              <p class="text-sm leading-relaxed text-muted">{{ project.learned }}</p>
+              <p class="text-sm leading-relaxed text-muted">
+                {{ project.learned }}
+              </p>
 
               @if (project.interactiveDemo) {
                 <app-text-compare-demo />
@@ -104,7 +112,7 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
 
               <button
                 type="button"
-                class="self-start text-sm font-medium text-accent transition hover:text-accent-strong"
+                class="self-start text-sm font-semibold text-accent transition hover:text-accent-strong"
                 (click)="openProject(project)"
               >
                 View details
@@ -128,7 +136,9 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
           <p class="text-base leading-relaxed text-muted">{{ project.summary }}</p>
 
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">Role / Impact</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
+              Role / Impact
+            </p>
             <ul class="mt-3 space-y-2 text-sm text-foreground">
               @for (point of project.roleImpact; track point) {
                 <li class="flex items-start gap-2">
@@ -140,12 +150,16 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
           </div>
 
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">What I learned</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
+              What I learned
+            </p>
             <p class="mt-2 text-sm leading-relaxed text-foreground">{{ project.learned }}</p>
           </div>
 
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">Project Breakdown</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
+              Project Breakdown
+            </p>
             <ul class="mt-3 space-y-2 text-sm text-foreground">
               @for (detail of project.details; track detail) {
                 <li class="flex items-start gap-2">
@@ -176,6 +190,15 @@ export class ProjectsSectionComponent {
 
   openProject(project: Project): void {
     this.selectedProject.set(project);
+  }
+
+  previewRoleImpact(project: Project): string[] {
+    return project.roleImpact.slice(0, 2);
+  }
+
+  projectCardClass(index: number): string {
+    const base = 'group flex h-full flex-col p-5 sm:p-6';
+    return index === 2 ? `${base} lg:col-span-2` : base;
   }
 
   closeProject(): void {

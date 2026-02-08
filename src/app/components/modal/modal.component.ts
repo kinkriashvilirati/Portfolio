@@ -29,7 +29,7 @@ import { Component, HostListener, computed, input, output } from '@angular/core'
             </button>
           </div>
 
-          <ng-content />
+          <ng-content></ng-content>
         </div>
       </div>
     }

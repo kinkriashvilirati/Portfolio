@@ -2,7 +2,7 @@ import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-container',
-  template: ` <div [class]="classes()"><ng-content /></div> `,
+  template: ` <div [class]="classes()"><ng-content></ng-content></div> `,
 })
 export class ContainerComponent {
   readonly className = input('');

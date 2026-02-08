@@ -4,7 +4,7 @@ import { Component, computed, input } from '@angular/core';
   selector: 'app-card',
   template: `
     <article [class]="classes()">
-      <ng-content />
+      <ng-content></ng-content>
     </article>
   `,
 })

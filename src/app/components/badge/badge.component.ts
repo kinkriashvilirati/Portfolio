@@ -6,7 +6,7 @@ type BadgeVariant = 'neutral' | 'accent' | 'success' | 'progress';
   selector: 'app-badge',
   template: `
     <span [class]="classes()">
-      <ng-content />
+      <ng-content></ng-content>
     </span>
   `,
 })

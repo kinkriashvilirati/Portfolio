@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -6,8 +7,10 @@ type ButtonSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'app-button',
-  imports: [RouterLink],
+  imports: [RouterLink, NgTemplateOutlet],
   template: `
+    <ng-template #buttonContent><ng-content></ng-content></ng-template>
+
     @if (href()) {
       <a
         [href]="href()!"
@@ -18,7 +21,7 @@ type ButtonSize = 'sm' | 'md' | 'lg';
         [class]="classes()"
         (click)="handleAnchorClick($event)"
       >
-        <ng-content />
+        <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
       </a>
     } @else if (routerLink()) {
       <a
@@ -27,7 +30,7 @@ type ButtonSize = 'sm' | 'md' | 'lg';
         [class]="classes()"
         (click)="handleAnchorClick($event)"
       >
-        <ng-content />
+        <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
       </a>
     } @else {
       <button
@@ -37,7 +40,7 @@ type ButtonSize = 'sm' | 'md' | 'lg';
         [class]="classes()"
         (click)="handleButtonClick($event)"
       >
-        <ng-content />
+        <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
       </button>
     }
   `,
@@ -57,13 +60,13 @@ export class ButtonComponent {
 
   readonly classes = computed(() => {
     const base =
-      'inline-flex items-center justify-center gap-2 rounded-xl font-medium transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-55';
+      'inline-flex items-center justify-center gap-2 rounded-xl font-semibold leading-none tracking-[0.01em] transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-55';
 
     const variantStyles: Record<ButtonVariant, string> = {
       primary:
         'bg-accent text-bg shadow-[0_14px_32px_-18px_var(--color-accent-strong)] hover:-translate-y-0.5 hover:bg-accent-strong',
       secondary:
-        'border border-border bg-surface/80 text-foreground hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface-strong/80',
+        'border border-border bg-surface/80 text-foreground shadow-soft hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface-strong/80',
       ghost: 'text-muted hover:text-foreground',
     };
 

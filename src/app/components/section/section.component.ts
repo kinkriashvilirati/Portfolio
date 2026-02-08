@@ -31,7 +31,7 @@ import { RevealOnScrollDirective } from '../reveal-on-scroll.directive';
           </div>
         }
 
-        <div [class.mt-10]="title()"><ng-content /></div>
+        <div [class.mt-10]="title()"><ng-content></ng-content></div>
       </app-container>
     </section>
   `,

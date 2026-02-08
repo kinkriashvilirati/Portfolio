@@ -1,10 +1,9 @@
 @config "../tailwind.config.js";
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
   --font-body: 'Manrope', 'Segoe UI', sans-serif;
-
   --color-bg: #060a13;
   --color-surface: #0d1424;
   --color-surface-strong: #141f36;
@@ -15,7 +14,6 @@
   --color-accent-strong: #7ce8ff;
   --color-accent-2: #24e8be;
   --color-shadow: rgba(9, 18, 36, 0.48);
-
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -49,7 +47,9 @@
     color: var(--color-foreground);
     text-rendering: optimizeLegibility;
   }
-
+  button {
+    cursor: pointer;
+  }
   h1,
   h2,
   h3,
@@ -88,20 +88,32 @@
 .blob-a {
   left: -9rem;
   top: 5rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 72%, transparent) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 72%, transparent) 0%,
+    transparent 70%
+  );
 }
 
 .blob-b {
   right: -9rem;
   top: 14rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-2) 68%, transparent) 0%, transparent 74%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent-2) 68%, transparent) 0%,
+    transparent 74%
+  );
   animation-delay: 2s;
 }
 
 .blob-c {
   left: 32%;
   bottom: -8rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 34%, transparent) 0%, transparent 72%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 34%, transparent) 0%,
+    transparent 72%
+  );
   animation-delay: 4s;
 }
 
@@ -111,7 +123,9 @@
   background-image:
     radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.06) 0 1px, transparent 1px),
     radial-gradient(circle at 80% 50%, rgb(255 255 255 / 0.06) 0 1px, transparent 1px);
-  background-size: 3px 3px, 4px 4px;
+  background-size:
+    3px 3px,
+    4px 4px;
   opacity: 0.14;
 }
 
@@ -140,7 +154,11 @@
   height: 12rem;
   width: 12rem;
   border-radius: 9999px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 30%, transparent) 0%, transparent 72%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 30%, transparent) 0%,
+    transparent 72%
+  );
 }
 
 .hero-tech-pill {
@@ -156,6 +174,40 @@
   text-transform: uppercase;
   color: var(--color-foreground);
   animation: rise-in 0.58s var(--ease-out) both;
+}
+
+.about-story-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-story-panel::after {
+  content: '';
+  position: absolute;
+  right: -3.5rem;
+  top: -4rem;
+  height: 11rem;
+  width: 11rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 26%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.about-focus-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border) 66%);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  padding: 0.42rem 0.78rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
 }
 
 .skill-chip {

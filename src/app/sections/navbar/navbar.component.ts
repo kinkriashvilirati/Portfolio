@@ -48,15 +48,27 @@ import { ThemeMode } from '../../styles/theme.service';
               type="button"
               class="rounded-xl border border-border bg-surface p-2 text-muted transition hover:border-accent/60 hover:text-foreground"
               (click)="toggleTheme.emit()"
-              [attr.aria-label]="theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+              [attr.aria-label]="
+                theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+              "
             >
               @if (theme() === 'dark') {
-                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="1.8">
-                  <path d="M12 3v2.3m0 13.4V21m9-9h-2.3M5.3 12H3m15.07 6.37-1.62-1.62M7.55 7.55 5.93 5.93m12.14 0-1.62 1.62M7.55 16.45l-1.62 1.62" />
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 fill-none stroke-current"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M12 3v2.3m0 13.4V21m9-9h-2.3M5.3 12H3m15.07 6.37-1.62-1.62M7.55 7.55 5.93 5.93m12.14 0-1.62 1.62M7.55 16.45l-1.62 1.62"
+                  />
                   <circle cx="12" cy="12" r="4.2"></circle>
                 </svg>
               } @else {
-                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="1.8">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 fill-none stroke-current"
+                  stroke-width="1.8"
+                >
                   <path d="M21 14.6A8.6 8.6 0 1 1 9.4 3a7.2 7.2 0 0 0 11.6 11.6Z"></path>
                 </svg>
               }
@@ -65,7 +77,7 @@ import { ThemeMode } from '../../styles/theme.service';
             <app-button
               variant="secondary"
               size="sm"
-              href="/cv.pdf"
+              href="/RatiKinkriashvili.pdf"
               download="Rati-Kinkriashvili-CV.pdf"
               ariaLabel="Download CV"
             >
