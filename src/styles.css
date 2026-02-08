@@ -1,3 +1,258 @@
-/* You can add global styles to this file, and also import other style files */
-
+@config "../tailwind.config.js";
 @import "tailwindcss";
+
+:root {
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+
+  --color-bg: #060a13;
+  --color-surface: #0d1424;
+  --color-surface-strong: #141f36;
+  --color-foreground: #e8eefb;
+  --color-muted: #99a6c3;
+  --color-border: #26344f;
+  --color-accent: #22d5ff;
+  --color-accent-strong: #7ce8ff;
+  --color-accent-2: #24e8be;
+  --color-shadow: rgba(9, 18, 36, 0.48);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme='light'] {
+  --color-bg: #f7faff;
+  --color-surface: #ffffff;
+  --color-surface-strong: #edf4ff;
+  --color-foreground: #111d36;
+  --color-muted: #4f5f80;
+  --color-border: #c8d6ef;
+  --color-accent: #0f77ff;
+  --color-accent-strong: #165ce6;
+  --color-accent-2: #06b6c4;
+  --color-shadow: rgba(17, 39, 82, 0.14);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-foreground);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 28%, transparent);
+  }
+}
+
+[data-observe-section] {
+  scroll-margin-top: 6.3rem;
+}
+
+.bg-blob {
+  position: absolute;
+  height: 22rem;
+  width: 22rem;
+  border-radius: 9999px;
+  filter: blur(74px);
+  opacity: 0.26;
+  transform-origin: center;
+  animation: float-blob 17s var(--ease-out) infinite;
+}
+
+.blob-a {
+  left: -9rem;
+  top: 5rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 72%, transparent) 0%, transparent 70%);
+}
+
+.blob-b {
+  right: -9rem;
+  top: 14rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent-2) 68%, transparent) 0%, transparent 74%);
+  animation-delay: 2s;
+}
+
+.blob-c {
+  left: 32%;
+  bottom: -8rem;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 34%, transparent) 0%, transparent 72%);
+  animation-delay: 4s;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.06) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 50%, rgb(255 255 255 / 0.06) 0 1px, transparent 1px);
+  background-size: 3px 3px, 4px 4px;
+  opacity: 0.14;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.72s var(--ease-out),
+    transform 0.72s var(--ease-out);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-stack-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-stack-card::before {
+  content: '';
+  position: absolute;
+  inset: -30% auto auto -40%;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 30%, transparent) 0%, transparent 72%);
+}
+
+.hero-tech-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  animation: rise-in 0.58s var(--ease-out) both;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 46%, transparent);
+  padding: 0.38rem 0.74rem;
+  font-size: 0.77rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: rise-in 0.5s var(--ease-out) both;
+}
+
+.skill-chip:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-accent) 52%, transparent);
+  box-shadow: 0 10px 24px -16px var(--color-accent);
+}
+
+.timeline-item {
+  animation: rise-in 0.56s var(--ease-out) both;
+}
+
+.toast-chip {
+  animation: toast-in 0.36s var(--ease-out) both;
+}
+
+.modal-backdrop {
+  animation: fade-in 0.24s ease-out both;
+}
+
+.modal-panel {
+  animation: scale-in 0.34s var(--ease-out) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(16px, -12px, 0) scale(1.04);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .bg-blob {
+    height: 16rem;
+    width: 16rem;
+    filter: blur(60px);
+  }
+}

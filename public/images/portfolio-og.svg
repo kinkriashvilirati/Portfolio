@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1222" />
+      <stop offset="1" stop-color="#1A2D4B" />
+    </linearGradient>
+    <linearGradient id="accent" x1="220" y1="200" x2="620" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D5FF" />
+      <stop offset="1" stop-color="#24E8BE" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="36" fill="url(#bg)" />
+  <circle cx="1040" cy="120" r="160" fill="#1CD5FF" fill-opacity="0.13" />
+  <circle cx="180" cy="520" r="220" fill="#24E8BE" fill-opacity="0.12" />
+  <rect x="96" y="88" width="120" height="56" rx="16" fill="#122239" />
+  <text x="132" y="126" fill="#E7EDFB" font-size="34" font-family="Arial, sans-serif" font-weight="700">RK</text>
+  <text x="96" y="252" fill="#E7EDFB" font-size="72" font-family="Arial, sans-serif" font-weight="700">
+    Rati Kinkriashvili
+  </text>
+  <text x="96" y="320" fill="#A3B2CF" font-size="38" font-family="Arial, sans-serif">
+    Frontend Web Developer
+  </text>
+  <rect x="96" y="366" width="430" height="76" rx="22" fill="url(#accent)" />
+  <text x="132" y="415" fill="#07111E" font-size="34" font-family="Arial, sans-serif" font-weight="700">
+    React + Angular
+  </text>
+</svg>
