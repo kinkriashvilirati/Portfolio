@@ -192,34 +192,18 @@ export const profile: ProfileData = {
       liveUrl: 'https://todo-rk.vercel.app/',
     },
     {
+      title: 'Log Plan',
+      status: 'Done',
+      description:
+        'Simple visual project for register/login input controls and planning option cards (premium and free), built with no backend logic.',
+      githubUrl: 'https://github.com/kinkriashvilirati/Log-Plan',
+      liveUrl: 'https://log-plan-rk.vercel.app/',
+    },
+    {
       title: 'Portfolio',
       status: 'In Progress',
       description:
         'Current stage: building a premium Angular portfolio with reusable architecture.',
-      githubUrl: '#',
-      liveUrl: '#',
-    },
-    {
-      title: 'E-commerce Admin Dashboard',
-      status: 'Planned',
-      description:
-        'Role-based dashboard with analytics cards, product tools, and reusable UI modules.',
-      githubUrl: '#',
-      liveUrl: '#',
-    },
-    {
-      title: 'Realtime Support Chat UI',
-      status: 'Planned',
-      description:
-        'Component-driven chat experience with status indicators and conversation management.',
-      githubUrl: '#',
-      liveUrl: '#',
-    },
-    {
-      title: 'Booking Flow App',
-      status: 'Planned',
-      description:
-        'Step-based reservation flow with validation, confirmation, and polished micro-interactions.',
       githubUrl: '#',
       liveUrl: '#',
     },

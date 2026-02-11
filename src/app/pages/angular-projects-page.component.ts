@@ -73,8 +73,8 @@ import { ThemeService } from '../styles/theme.service';
               Angular Projects
             </h1>
             <p class="mt-4 text-lg leading-relaxed text-muted">
-              Current status: {{ profileData.roadmapStage }}. This roadmap tracks completed projects, the active
-              portfolio phase, and planned next builds.
+              Current status: {{ profileData.roadmapStage }}. This roadmap tracks completed projects and the active
+              portfolio phase.
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export class AngularProjectsPageComponent {
 
   constructor() {
     const description =
-      'Angular projects roadmap for Rati Kinkriashvili, including completed projects and planned learning builds.';
+      'Angular projects roadmap for Rati Kinkriashvili, including completed projects and the active portfolio build.';
 
     this.titleService.setTitle('Angular Projects | Rati Kinkriashvili');
     this.metaService.updateTag({ name: 'description', content: description });
