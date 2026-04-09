@@ -30,11 +30,11 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
         </p>
 
         <app-button
-          routerLink="/angular-projects"
+          routerLink="/other-projects"
           size="lg"
           className="min-w-52 border border-accent/45 bg-accent text-bg shadow-elevated"
         >
-          Angular Projects ->
+          other Projects ->
         </app-button>
       </div>
 

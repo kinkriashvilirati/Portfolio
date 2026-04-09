@@ -92,15 +92,15 @@ export const profile: ProfileData = {
   ],
   headline: 'Front-End Developer',
   subline:
-    'Building responsive web apps with React and Angular, focused on clean UX and strong performance.',
+    'Building responsive web apps with React and TypeScript, focused on clean UX and strong performance.',
   summary:
     'Dedicated and ambitious Front-End Developer, focused on gaining real-world experience and continuously improving.',
   availability: 'Available for junior role / internship',
-  heroTech: ['React', 'Angular', 'TypeScript', 'Tailwind', 'REST APIs', 'Git/GitHub'],
+  heroTech: ['React', 'TypeScript', 'Javascript', 'Tailwind', 'REST APIs', 'Git/GitHub'],
   aboutStory:
-    'I enjoy translating product ideas into interfaces that are clear, fast, and reliable. My work started with React projects where I built component-based UIs and real user flows, and I now apply the same product mindset while deepening my Angular expertise.',
+    'I enjoy translating product ideas into interfaces that are clear, fast, and reliable. My work started with React projects where I built component-based UIs and real user flows, and I apply the same product mindset to every project I build.',
   currentFocus:
-    'Right now I am focused on Angular architecture, reusable standalone components, Signals, and scalable UI systems that stay maintainable as projects grow.',
+    'Right now I am focused on React, TypeScript, TanStack Query, and building full-stack connected apps with real auth flows and clean component architecture.',
   quickFacts: [
     { title: 'Location', value: 'Georgia' },
     { title: 'Languages', value: 'Georgian (Native), English (B2), Japanese (N3)' },
@@ -115,7 +115,15 @@ export const profile: ProfileData = {
       image: '/images/online-marketplace.svg',
       githubUrl: 'https://github.com/kinkriasvhili/SellBuy',
       liveUrl: 'https://sell-buy1.netlify.app/',
-      tech: ['React', 'TypeScript/JS', 'REST API', 'React Query/Fetch/Axios', 'Tailwind', 'GitHub'],
+      tech: [
+        'React',
+        'TypeScript/JS',
+        'REST API',
+        'React Query/Fetch/Axios',
+        'CSS',
+        'HTML',
+        'Git/GitHub',
+      ],
       roleImpact: [
         'Built reusable product listing, dashboard, and form components.',
         'Integrated authentication APIs for signup, login, and password recovery.',
@@ -132,35 +140,14 @@ export const profile: ProfileData = {
       featured: true,
     },
     {
-      id: 'text-comparison-tool',
-      title: 'Text Comparison Tool',
-      summary: 'One-page tool to compare differences between two texts.',
-      image: '/images/text-comparison.svg',
-      githubUrl: 'https://github.com/kinkriasvhili/CompareText',
-      liveUrl: 'https://compare-text1.netlify.app/',
-      tech: ['React', 'TypeScript', 'UI components'],
-      roleImpact: [
-        'Designed a focused single-page workflow for quick side-by-side checks.',
-        'Built a clean, low-friction interface for comparing text blocks.',
-        'Optimized interaction flow for clarity on added and removed content.',
-      ],
-      learned:
-        'What I learned: small tools become powerful when interaction speed and visual clarity are treated as core features.',
-      details: [
-        'Prioritized content readability and clear result states.',
-        'Kept the logic modular so diff behavior can evolve over time.',
-      ],
-      interactiveDemo: true,
-    },
-    {
-      id: 'mini-ecommerce-sites',
-      title: 'Mini E-commerce Sites (Amazon-like)',
+      id: 'mini-ecommerce-site',
+      title: 'Mini E-commerce Site (Amazon-Copy)',
       summary:
         'Smaller e-commerce websites with product listings, cart functionality, and basic checkout flows.',
       image: '/images/mini-ecommerce.svg',
-      githubUrl: 'https://github.com/kinkriasvhili/AMAZONPROJECT',
-      liveUrl: 'https://kinkriasvhili.github.io/AMAZONPROJECT/amazon.html',
-      tech: ['React', 'CSS/Tailwind', 'State management'],
+      githubUrl: 'https://github.com/kinkriashvilirati/Amazon-Copy',
+      liveUrl: 'https://kinkriashvilirati.github.io/Amazon-Copy/amazon.htmll',
+      tech: ['Vanilla Javascript', 'HTML', 'CSS', 'Git'],
       roleImpact: [
         'Implemented shopping cart and quantity updates across product views.',
         'Built search and filter flows to improve product discovery.',
@@ -177,35 +164,35 @@ export const profile: ProfileData = {
   ],
   angularRoadmap: [
     {
-      title: 'Tic-Tac-Toe',
-      status: 'Done',
-      description:
-        'Built game logic, component communication, and state updates with Angular fundamentals.',
-      githubUrl: 'https://github.com/kinkriashvilirati/Tic-Tac-Toe',
-      liveUrl: 'https://tic-tac-toe-rk.vercel.app/',
-    },
-    {
-      title: 'Todo List',
-      status: 'Done',
-      description: 'Practiced CRUD patterns, form handling, and simple UX polish in Angular.',
-      githubUrl: 'https://github.com/kinkriashvilirati/Todo-List',
-      liveUrl: 'https://todo-rk.vercel.app/',
-    },
-    {
-      title: 'Log Plan',
-      status: 'Done',
-      description:
-        'Simple visual project for register/login input controls and planning option cards (premium and free), built with no backend logic.',
-      githubUrl: 'https://github.com/kinkriashvilirati/Log-Plan',
-      liveUrl: 'https://log-plan-rk.vercel.app/',
-    },
-    {
       title: 'Portfolio',
-      status: 'In Progress',
-      description:
-        'Current stage: building a premium Angular portfolio with reusable architecture.',
+      status: 'Done',
+      description: 'Portfolio build for Rati Kinkriashvili, showcasing  projects and skills.',
       githubUrl: '#',
       liveUrl: '#',
+    },
+    {
+      title: 'Warby-Parker E-ccomerece Website',
+      status: 'Done',
+      description:
+        'E-commerce website for Warby-Parker, featuring product listings, cart functionality, and basic checkout flows.',
+      githubUrl: 'https://github.com/kinkriashvilirati/Warby-Parker',
+      liveUrl: 'https://kinkriashvilirati.github.io/Warby-Parker/warbyparker.html',
+    },
+    {
+      title: 'Online Courses Platform',
+      status: 'In Progress',
+      description:
+        'Full-stack connected online learning platform with authentication, course catalog, enrollment system, and user profile management. Built with React, TypeScript, and TanStack Query.',
+      githubUrl: 'https://github.com/kinkriashvilirati/OnlineCourses',
+      liveUrl: 'https://online-courses-rk.vercel.app/',
+    },
+    {
+      title: 'Progress Tracking Software',
+      status: 'In Progress',
+      description:
+        'Company task and employee management application where managers can delegate and track tasks across team members. Built with React and TypeScript, connected to a real backend API.',
+      githubUrl: 'https://github.com/kinkriashvilirati/-Progress-Tracking-Software',
+      liveUrl: 'https://progress-tracking-software-rk.vercel.app/',
     },
   ],
   roadmapStage: 'Portfolio stage',
@@ -213,14 +200,7 @@ export const profile: ProfileData = {
     {
       title: 'Front End',
       icon: 'code',
-      skills: [
-        'JavaScript',
-        'TypeScript',
-        'HTML',
-        'CSS',
-        'React',
-        'Angular (currently working on)',
-      ],
+      skills: ['JavaScript', 'TypeScript', 'HTML', 'CSS', 'React'],
     },
     {
       title: 'APIs',

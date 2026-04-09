@@ -8,7 +8,7 @@ export const routes: Routes = [
     component: HomePageComponent,
   },
   {
-    path: 'angular-projects',
+    path: 'other-projects',
     component: AngularProjectsPageComponent,
   },
   {

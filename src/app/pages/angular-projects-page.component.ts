@@ -38,22 +38,34 @@ import { ThemeService } from '../styles/theme.service';
               RK
             </a>
 
-            <p class="text-sm font-medium text-muted">Angular Projects Roadmap</p>
+            <p class="text-sm font-medium text-muted">Projects Roadmap</p>
 
             <div class="ml-auto flex items-center gap-2">
               <button
                 type="button"
                 class="rounded-xl border border-border bg-surface p-2 text-muted transition hover:border-accent/60 hover:text-foreground"
                 (click)="themeService.toggleTheme()"
-                [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+                [attr.aria-label]="
+                  themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+                "
               >
                 @if (themeService.theme() === 'dark') {
-                  <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="1.8">
-                    <path d="M12 3v2.3m0 13.4V21m9-9h-2.3M5.3 12H3m15.07 6.37-1.62-1.62M7.55 7.55 5.93 5.93m12.14 0-1.62 1.62M7.55 16.45l-1.62 1.62" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-4 w-4 fill-none stroke-current"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      d="M12 3v2.3m0 13.4V21m9-9h-2.3M5.3 12H3m15.07 6.37-1.62-1.62M7.55 7.55 5.93 5.93m12.14 0-1.62 1.62M7.55 16.45l-1.62 1.62"
+                    />
                     <circle cx="12" cy="12" r="4.2"></circle>
                   </svg>
                 } @else {
-                  <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current" stroke-width="1.8">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-4 w-4 fill-none stroke-current"
+                    stroke-width="1.8"
+                  >
                     <path d="M21 14.6A8.6 8.6 0 1 1 9.4 3a7.2 7.2 0 0 0 11.6 11.6Z"></path>
                   </svg>
                 }
@@ -68,21 +80,29 @@ import { ThemeService } from '../styles/theme.service';
       <main class="pb-20 pt-10 sm:pt-14">
         <app-container>
           <div [appRevealOnScroll]="true" class="max-w-3xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">Learning Path</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+              Learning Path
+            </p>
             <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
               Angular Projects
             </h1>
             <p class="mt-4 text-lg leading-relaxed text-muted">
-              Current status: {{ profileData.roadmapStage }}. This roadmap tracks completed projects and the active
-              portfolio phase.
+              Current status: {{ profileData.roadmapStage }}. This roadmap tracks completed projects
+              and the active portfolio phase.
             </p>
           </div>
 
           <ol class="relative mt-10 space-y-7">
             @for (item of profileData.angularRoadmap; track item.title; let index = $index) {
-              <li class="relative pl-10" [appRevealOnScroll]="true" [style.transition-delay.ms]="100 + index * 70">
+              <li
+                class="relative pl-10"
+                [appRevealOnScroll]="true"
+                [style.transition-delay.ms]="100 + index * 70"
+              >
                 @if (index < profileData.angularRoadmap.length - 1) {
-                  <span class="absolute left-[0.43rem] top-7 h-[calc(100%+1.3rem)] w-px bg-border/80"></span>
+                  <span
+                    class="absolute left-[0.43rem] top-7 h-[calc(100%+1.3rem)] w-px bg-border/80"
+                  ></span>
                 }
 
                 <span
@@ -101,7 +121,9 @@ import { ThemeService } from '../styles/theme.service';
                   <p class="text-sm leading-relaxed text-muted">{{ item.description }}</p>
 
                   <div class="flex flex-wrap gap-3">
-                    <app-button [href]="item.liveUrl" [external]="item.liveUrl !== '#'">Live Demo</app-button>
+                    <app-button [href]="item.liveUrl" [external]="item.liveUrl !== '#'"
+                      >Live Demo</app-button
+                    >
                     <app-button
                       [href]="item.githubUrl"
                       [external]="item.githubUrl !== '#'"
@@ -131,7 +153,10 @@ export class AngularProjectsPageComponent {
 
     this.titleService.setTitle('Angular Projects | Rati Kinkriashvili');
     this.metaService.updateTag({ name: 'description', content: description });
-    this.metaService.updateTag({ property: 'og:title', content: 'Angular Projects | Rati Kinkriashvili' });
+    this.metaService.updateTag({
+      property: 'og:title',
+      content: 'Angular Projects | Rati Kinkriashvili',
+    });
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ property: 'og:type', content: 'website' });
   }
