@@ -1,32 +1,23 @@
-# Rati Kinkriashvili Portfolio (Angular)
+# Rati Kinkriashvili — Portfolio
 
-## Install
+Personal portfolio showcasing my frontend projects, skills, and background.
 
-```bash
-npm install
-```
+## Live Site
 
-## Run
+[https://kinkriashvilirati-rk.vercel.app/](#)
 
-```bash
-npm run start
-```
+## Built With
 
-## Build
+Angular · TypeScript · Tailwind CSS
 
-```bash
-npm run build
-```
+## What's Inside
 
-## Where to Edit Content
+- Projects with live demos and GitHub links
+- Skills & tech stack
+- Education & background
+- Contact form
 
-- Main portfolio content, links, skills, roadmap, contact: `src/app/data/profile.ts`
-- Global color tokens and animation styles: `src/styles.css`
-- Tailwind color mapping to CSS variables: `tailwind.config.js`
+## Preview
 
-## Where to Replace Links and Screenshots
-
-- Replace project mock screenshots in `public/images/`
-- Replace OpenGraph image: `public/images/portfolio-og.svg`
-- Replace CV placeholder file: `public/cv.pdf`
-- Replace placeholder social links (`#`) in `src/app/data/profile.ts`
+![home dark](home-dark.png)
+![home light](home-light.png)
