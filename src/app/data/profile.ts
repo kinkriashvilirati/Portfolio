@@ -229,21 +229,21 @@ export const profile: ProfileData = {
     },
     {
       id: 'warby-parker',
-      title: 'Warby Parker E-commerce Website',
+      title: 'Warby Parker Website (copy)',
       status: 'Done',
       year: '2024',
       description:
-        'E-commerce website for Warby-Parker, featuring product listings, cart functionality, and basic checkout flows.',
+        'Website for glasses and eye consultation, featuring product listings, quiz, filtering data, basic checkout flows...',
       githubUrl: 'https://github.com/kinkriashvilirati/Warby-Parker',
       liveUrl: 'https://kinkriashvilirati.github.io/Warby-Parker/warbyparker.html',
     },
     {
-      id: 'mini-ecommerce-site',
-      title: 'Mini E-commerce Site (Amazon Copy)',
+      id: 'amazon Copy',
+      title: 'Amazon Copy',
       status: 'Done',
       year: '2024',
       description:
-        'Smaller e-commerce build with product browsing, cart updates, and a basic checkout experience.',
+        'Small Amazon-copy with product browsing, cart updates, and a basic checkout experience.',
       githubUrl: 'https://github.com/kinkriashvilirati/Amazon-Copy',
       liveUrl: 'https://kinkriashvilirati.github.io/Amazon-Copy/amazon.htmll',
     },
@@ -311,6 +311,6 @@ export const profile: ProfileData = {
   ],
   social: [
     { label: 'GitHub', url: 'https://github.com/kinkriashvilirati' },
-    { label: 'LinkedIn', url: '#' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/ratikinkriashvili/' },
   ],
 };

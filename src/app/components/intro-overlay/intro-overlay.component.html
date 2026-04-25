@@ -1,0 +1,51 @@
+<section
+  class="fixed inset-0 z-120 flex items-center justify-center overflow-hidden bg-(--color-bg)"
+  [class.intro-overlay--exit]="exiting()"
+  aria-hidden="true"
+>
+  <div
+    class="absolute -left-20 top-[18%] h-56 w-56 rounded-full bg-(--color-accent) opacity-12 blur-3xl"
+  ></div>
+  <div
+    class="absolute -right-16 bottom-[14%] h-64 w-64 rounded-full bg-(--color-accent-2) opacity-10 blur-3xl"
+  ></div>
+
+  <div
+    class="intro-overlay__panel intro-overlay__panel--left absolute inset-y-0 left-0 w-[calc(50%+1px)] bg-(--color-bg)"
+  ></div>
+  <div
+    class="intro-overlay__panel intro-overlay__panel--right absolute inset-y-0 right-0 w-[calc(50%+1px)] bg-(--color-bg)"
+  ></div>
+
+  <div
+    class="relative z-10 flex w-full max-w-5xl flex-col items-center gap-4 px-6 text-center md:flex-row md:items-end md:justify-center md:gap-7 md:text-left"
+  >
+    <div
+      class="intro-overlay__word intro-overlay__word--left flex flex-wrap justify-center md:justify-end"
+    >
+      @for (char of lastNameChars; track $index) {
+        <span
+          class="intro-overlay__char text-[clamp(2.3rem,8vw,5rem)] font-semibold tracking-[-0.06em] text-(--color-accent)"
+          [style.animationDelay.ms]="lastNameDelay($index)"
+        >
+          {{ char }}
+        </span>
+      }
+    </div>
+
+    <div
+      class="intro-overlay__word intro-overlay__word--right flex flex-col items-center gap-2 md:items-start"
+    >
+      <div class="flex flex-wrap justify-center md:justify-start">
+        @for (char of firstNameChars; track $index) {
+          <span
+            class="intro-overlay__char text-[clamp(2.2rem,7vw,4.4rem)] font-semibold tracking-[-0.06em] text-(--color-foreground)"
+            [style.animationDelay.ms]="firstNameDelay($index)"
+          >
+            {{ char }}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+</section>
