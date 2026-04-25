@@ -95,7 +95,7 @@ export class HomePageComponent implements AfterViewInit, OnDestroy {
 
   constructor() {
     const description =
-      'Rati Kinkriashvili portfolio: frontend projects, Angular learning roadmap, technical skills, and contact details.';
+      'Rati Kinkriashvili portfolio: featured frontend projects, full project archive, technical skills, and contact details.';
 
     this.titleService.setTitle('Rati Kinkriashvili | Frontend Web Developer');
     this.metaService.updateTag({ name: 'description', content: description });

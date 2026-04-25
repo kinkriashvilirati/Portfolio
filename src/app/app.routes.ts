@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { AngularProjectsPageComponent } from './pages/angular-projects-page.component';
 import { HomePageComponent } from './pages/home-page.component';
+import { OtherProjectsPageComponent } from './pages/other-projects-page.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: 'other-projects',
-    component: AngularProjectsPageComponent,
+    component: OtherProjectsPageComponent,
   },
   {
     path: '**',

@@ -6,11 +6,11 @@ import { ButtonComponent } from '../components/button/button.component';
 import { CardComponent } from '../components/card/card.component';
 import { ContainerComponent } from '../components/container/container.component';
 import { RevealOnScrollDirective } from '../components/reveal-on-scroll.directive';
-import { profile, RoadmapItem } from '../data/profile';
+import { profile, ProjectArchiveItem } from '../data/profile';
 import { ThemeService } from '../styles/theme.service';
 
 @Component({
-  selector: 'app-angular-projects-page',
+  selector: 'app-other-projects-page',
   imports: [
     ContainerComponent,
     CardComponent,
@@ -38,7 +38,7 @@ import { ThemeService } from '../styles/theme.service';
               RK
             </a>
 
-            <p class="text-sm font-medium text-muted">Projects Roadmap</p>
+            <p class="text-sm font-medium text-muted">Project Archive</p>
 
             <div class="ml-auto flex items-center gap-2">
               <button
@@ -81,25 +81,24 @@ import { ThemeService } from '../styles/theme.service';
         <app-container>
           <div [appRevealOnScroll]="true" class="max-w-3xl">
             <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-              Learning Path
+              Full Project List
             </p>
             <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-              Angular Projects
+              Other Projects
             </h1>
             <p class="mt-4 text-lg leading-relaxed text-muted">
-              Current status: {{ profileData.roadmapStage }}. This roadmap tracks completed projects
-              and the active portfolio phase.
+              {{ profileData.projectArchiveSummary }}
             </p>
           </div>
 
           <ol class="relative mt-10 space-y-7">
-            @for (item of profileData.angularRoadmap; track item.title; let index = $index) {
+            @for (item of profileData.projectArchive; track item.id; let index = $index) {
               <li
                 class="relative pl-10"
                 [appRevealOnScroll]="true"
                 [style.transition-delay.ms]="100 + index * 70"
               >
-                @if (index < profileData.angularRoadmap.length - 1) {
+                @if (index < profileData.projectArchive.length - 1) {
                   <span
                     class="absolute left-[0.43rem] top-7 h-[calc(100%+1.3rem)] w-px bg-border/80"
                   ></span>
@@ -111,27 +110,35 @@ import { ThemeService } from '../styles/theme.service';
                 ></span>
 
                 <app-card className="space-y-4">
-                  <div class="flex flex-wrap items-center gap-3">
+                  <div class="flex flex-wrap items-start gap-3">
                     <h2 class="font-display text-2xl font-semibold tracking-tight text-foreground">
                       {{ item.title }}
                     </h2>
-                    <app-badge [variant]="statusVariant(item)">{{ item.status }}</app-badge>
+
+                    <div class="ml-auto flex flex-wrap items-center gap-2">
+                      <span
+                        class="inline-flex items-center rounded-full border border-border/80 bg-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted"
+                      >
+                        {{ item.year }}
+                      </span>
+                      <app-badge [variant]="statusVariant(item)">{{ item.status }}</app-badge>
+                    </div>
                   </div>
 
                   <p class="text-sm leading-relaxed text-muted">{{ item.description }}</p>
 
-                  <div class="flex flex-wrap gap-3">
-                    <app-button [href]="item.liveUrl" [external]="item.liveUrl !== '#'"
-                      >Live Demo</app-button
-                    >
-                    <app-button
-                      [href]="item.githubUrl"
-                      [external]="item.githubUrl !== '#'"
-                      variant="secondary"
-                    >
-                      GitHub
-                    </app-button>
-                  </div>
+                  @if (item.liveUrl !== '#' || item.githubUrl !== '#') {
+                    <div class="flex flex-wrap gap-3">
+                      @if (item.liveUrl !== '#') {
+                        <app-button [href]="item.liveUrl" [external]="true">Live Demo</app-button>
+                      }
+                      @if (item.githubUrl !== '#') {
+                        <app-button [href]="item.githubUrl" [external]="true" variant="secondary">
+                          GitHub
+                        </app-button>
+                      }
+                    </div>
+                  }
                 </app-card>
               </li>
             }
@@ -141,7 +148,7 @@ import { ThemeService } from '../styles/theme.service';
     </div>
   `,
 })
-export class AngularProjectsPageComponent {
+export class OtherProjectsPageComponent {
   readonly profileData = profile;
   readonly themeService = inject(ThemeService);
   private readonly titleService = inject(Title);
@@ -149,19 +156,19 @@ export class AngularProjectsPageComponent {
 
   constructor() {
     const description =
-      'Angular projects roadmap for Rati Kinkriashvili, including completed projects and the active portfolio build.';
+      'Full project archive for Rati Kinkriashvili, including featured work, earlier builds, and the current in-progress project.';
 
-    this.titleService.setTitle('Angular Projects | Rati Kinkriashvili');
+    this.titleService.setTitle('Other Projects | Rati Kinkriashvili');
     this.metaService.updateTag({ name: 'description', content: description });
     this.metaService.updateTag({
       property: 'og:title',
-      content: 'Angular Projects | Rati Kinkriashvili',
+      content: 'Other Projects | Rati Kinkriashvili',
     });
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ property: 'og:type', content: 'website' });
   }
 
-  statusVariant(item: RoadmapItem): 'success' | 'progress' | 'neutral' {
+  statusVariant(item: ProjectArchiveItem): 'success' | 'progress' | 'neutral' {
     if (item.status === 'Done') {
       return 'success';
     }
@@ -173,7 +180,7 @@ export class AngularProjectsPageComponent {
     return 'neutral';
   }
 
-  statusDotClass(item: RoadmapItem): string {
+  statusDotClass(item: ProjectArchiveItem): string {
     if (item.status === 'Done') {
       return 'border-emerald-400/60 bg-emerald-400/30';
     }

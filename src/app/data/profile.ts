@@ -41,9 +41,11 @@ export interface EducationItem {
   description: string;
 }
 
-export interface RoadmapItem {
+export interface ProjectArchiveItem {
+  id: string;
   title: string;
   status: RoadmapStatus;
+  year: string;
   description: string;
   githubUrl: string;
   liveUrl: string;
@@ -70,8 +72,8 @@ export interface ProfileData {
   currentFocus: string;
   quickFacts: QuickFact[];
   projects: Project[];
-  angularRoadmap: RoadmapItem[];
-  roadmapStage: string;
+  projectArchiveSummary: string;
+  projectArchive: ProjectArchiveItem[];
   skills: SkillCategory[];
   education: EducationItem[];
   social: SocialLink[];
@@ -140,62 +142,132 @@ export const profile: ProfileData = {
       featured: true,
     },
     {
-      id: 'mini-ecommerce-site',
-      title: 'Mini E-commerce Site (Amazon-Copy)',
+      id: 'online-courses',
+      title: 'Online Courses Platform',
       summary:
-        'Smaller e-commerce websites with product listings, cart functionality, and basic checkout flows.',
-      image: '/images/mini-ecommerce.svg',
-      githubUrl: 'https://github.com/kinkriashvilirati/Amazon-Copy',
-      liveUrl: 'https://kinkriashvilirati.github.io/Amazon-Copy/amazon.htmll',
-      tech: ['Vanilla Javascript', 'HTML', 'CSS', 'Git'],
+        'Built a production-style learning platform with course discovery, scheduling, enrollment, and progress tracking flows.',
+      image: '/images/online-courses.svg',
+      githubUrl: 'https://github.com/kinkriashvilirati/OnlineCourses',
+      liveUrl: 'https://online-course-rk.netlify.app/',
+      tech: [
+        'React 19',
+        'TypeScript',
+        'Vite',
+        'Tailwind CSS',
+        'React Router',
+        'TanStack Query',
+        'Axios',
+      ],
       roleImpact: [
-        'Implemented shopping cart and quantity updates across product views.',
-        'Built search and filter flows to improve product discovery.',
-        'Shaped buying flow with clear cart and checkout interfaces.',
+        'Built a course catalog with filters, sorting, and pagination for faster discovery.',
+        'Integrated backend enrollment flows with schedule selection and conflict handling.',
+        'Added dashboard flows for active courses, completions, ratings, and retakes.',
+        'Structured reusable routing and data-fetching patterns across the app.',
       ],
       learned:
-        'What I learned: state consistency across cart, search, and checkout is the foundation of e-commerce UX.',
+        'What I learned: strong product flows come from designing data fetching, scheduling rules, and confirmation states together from the beginning.',
       details: [
-        'Improved product browsing and conversion path with clearer hierarchy.',
-        'Practiced handling shared state updates across multiple screens.',
+        'Designed featured and catalog course browsing with category, topic, and instructor filters.',
+        'Implemented weekly schedules, time slots, and session type selection before enrollment.',
+        'Handled schedule conflicts with a confirmation flow before sending the final request.',
+        'Added completion, rating, and retake experiences from the learner dashboard.',
       ],
-      features: ['Cart functionality', 'Responsive layout', 'Basic checkout UI'],
+      features: [
+        'Browse featured and catalog courses',
+        'Filter, sort, and paginate courses',
+        'Choose schedules, time slots, and session types',
+        'Enroll with backend integration',
+        'Handle schedule conflicts with confirmation flow',
+        'Track progress and reopen enrolled courses',
+      ],
+      featured: true,
     },
   ],
-  angularRoadmap: [
+  projectArchiveSummary:
+    'A full archive of finished builds, smaller experiments, and the one in-progress project I am still shaping.',
+  projectArchive: [
     {
+      id: 'progress-tracking-software',
+      title: 'Progress Tracking Software',
+      status: 'In Progress',
+      year: '2025',
+      description:
+        'Company task and employee management application where managers can delegate and track work across team members.',
+      githubUrl: 'https://github.com/kinkriashvilirati/-Progress-Tracking-Software',
+      liveUrl: 'https://progress-tracking-software-rk.vercel.app/',
+    },
+    {
+      id: 'online-courses',
+      title: 'Online Courses Platform',
+      status: 'Done',
+      year: '2025',
+      description:
+        'Course platform with discovery, scheduling, enrollment, dashboard progress, ratings, and retake flows.',
+      githubUrl: 'https://github.com/kinkriashvilirati/OnlineCourses',
+      liveUrl: 'https://online-course-rk.netlify.app/',
+    },
+    {
+      id: 'portfolio',
       title: 'Portfolio',
       status: 'Done',
-      description: 'Portfolio build for Rati Kinkriashvili, showcasing  projects and skills.',
+      year: '2025',
+      description:
+        'Portfolio build for Rati Kinkriashvili, showcasing projects, skills, and contact details.',
       githubUrl: '#',
       liveUrl: '#',
     },
+
     {
-      title: 'Warby-Parker E-ccomerece Website',
+      id: 'online-marketplace',
+      title: 'Online Marketplace',
       status: 'Done',
+      year: '2025',
+      description:
+        'Marketplace app with authentication flows, reusable product views, and backend-connected user actions.',
+      githubUrl: 'https://github.com/kinkriasvhili/SellBuy',
+      liveUrl: 'https://sell-buy1.netlify.app/',
+    },
+    {
+      id: 'warby-parker',
+      title: 'Warby Parker E-commerce Website',
+      status: 'Done',
+      year: '2024',
       description:
         'E-commerce website for Warby-Parker, featuring product listings, cart functionality, and basic checkout flows.',
       githubUrl: 'https://github.com/kinkriashvilirati/Warby-Parker',
       liveUrl: 'https://kinkriashvilirati.github.io/Warby-Parker/warbyparker.html',
     },
     {
-      title: 'Online Courses Platform',
-      status: 'In Progress',
+      id: 'mini-ecommerce-site',
+      title: 'Mini E-commerce Site (Amazon Copy)',
+      status: 'Done',
+      year: '2024',
       description:
-        'Full-stack connected online learning platform with authentication, course catalog, enrollment system, and user profile management. Built with React, TypeScript, and TanStack Query.',
-      githubUrl: 'https://github.com/kinkriashvilirati/OnlineCourses',
-      liveUrl: 'https://online-courses-rk.vercel.app/',
+        'Smaller e-commerce build with product browsing, cart updates, and a basic checkout experience.',
+      githubUrl: 'https://github.com/kinkriashvilirati/Amazon-Copy',
+      liveUrl: 'https://kinkriashvilirati.github.io/Amazon-Copy/amazon.htmll',
     },
     {
-      title: 'Progress Tracking Software',
-      status: 'In Progress',
+      id: 'codecamp-ecommerce',
+      title: 'CodeCamp E-commerce Website',
+      status: 'Done',
+      year: '2023',
       description:
-        'Company task and employee management application where managers can delegate and track tasks across team members. Built with React and TypeScript, connected to a real backend API.',
-      githubUrl: 'https://github.com/kinkriashvilirati/-Progress-Tracking-Software',
-      liveUrl: 'https://progress-tracking-software-rk.vercel.app/',
+        'Earlier small e-commerce website built around product browsing and a lightweight shopping flow.',
+      githubUrl: 'https://github.com/kinkriasvhili/CodeCampEccomerce',
+      liveUrl: 'https://kinkriasvhili.github.io/CodeCampEccomerce/',
+    },
+    {
+      id: 'ecommerce-website',
+      title: 'E-commerce Website',
+      status: 'Done',
+      year: '2023',
+      description:
+        'Older storefront project focused on product listing layout, navigation, and core shopping interactions.',
+      githubUrl: 'https://github.com/kinkriasvhili/EccomerceWebSite',
+      liveUrl: 'https://kinkriasvhili.github.io/EccomerceWebsite/eccomerceWebsite/main.html',
     },
   ],
-  roadmapStage: 'Portfolio stage',
   skills: [
     {
       title: 'Front End',

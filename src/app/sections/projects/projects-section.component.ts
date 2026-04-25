@@ -34,7 +34,7 @@ import { TextCompareDemoComponent } from './text-compare-demo.component';
           size="lg"
           className="min-w-52 border border-accent/45 bg-accent text-bg shadow-elevated"
         >
-          other Projects ->
+          Other Projects ->
         </app-button>
       </div>
 
