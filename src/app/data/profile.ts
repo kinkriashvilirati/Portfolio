@@ -265,7 +265,7 @@ export const profile: ProfileData = {
       description:
         'Older storefront project focused on product listing layout, navigation, and core shopping interactions.',
       githubUrl: 'https://github.com/kinkriasvhili/EccomerceWebSite',
-      liveUrl: 'https://kinkriasvhili.github.io/EccomerceWebsite/eccomerceWebsite/main.html',
+      liveUrl: 'https://kinkriasvhili.github.io/EccomerceWebSite/eccomereceWebsite/main.html',
     },
   ],
   skills: [
